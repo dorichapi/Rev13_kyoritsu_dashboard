@@ -120,11 +120,12 @@ function formatDate(dateString) {
     return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日(${["日", "月", "火", "水", "木", "金", "土"][date.getDay()]})`;
 }
 
-// ✅ 初期化
+// ✅ スクリプトのロード時に関数を確実に呼び出す
 document.addEventListener("DOMContentLoaded", function () {
     fetchData();
     fetchSpecialData();
 });
+
 
         
 
