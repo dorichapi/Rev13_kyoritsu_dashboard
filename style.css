@@ -205,4 +205,12 @@ canvas {
     canvas {
         height: 250px !important;
     }
+    
+/* ✅ カード日時スタイルを追加 */
+    .update-time-card {
+    font-size: 18px;
+    color: #666;
+    font-weight: bold;
+    margin-top: 5px;
+    }
 }
