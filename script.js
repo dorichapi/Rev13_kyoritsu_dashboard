@@ -59,7 +59,7 @@ async function fetchData() {
         }
 
         const latestData = result.data[result.data.length - 1] || {};
-        const updateTimes = result.updateTimes || {};  // 各項目の更新時刻
+        const updateTimes = result.updateTimes || {};
 
         // ✅ 各データの更新時刻を取得し、表示
         const formattedTimes = {
@@ -106,7 +106,7 @@ async function fetchData() {
     }
 }
 
-// ✅ 時刻フォーマット関数（空の値は "--:--" にする）
+// ✅ 時刻フォーマット関数
 function formatTime(dateString) {
     if (!dateString || isNaN(Date.parse(dateString))) return "--:--";
     const date = new Date(dateString);
@@ -125,7 +125,6 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchData();
     fetchSpecialData();
 });
-
 
         
 
