@@ -1,5 +1,5 @@
 // ✅ ダッシュボードのデータ取得 & グラフ表示用 API
-const apiUrl = "https://script.google.com/macros/s/AKfycbzugkWyOALBKUq7gHbpngg2BJoiqakHw0k_09tPqKr_Nubs9pOiCLM0_dQmRvl_7xpj/exec";
+const apiUrl = "https://script.google.com/macros/s/AKfycbwGwkmHAYkwai0co4zfP7kTjAT5FVVR-rh4P4b-ZZDgg15JoqbZw29j_gILNGXdR8Ki/exec";
 
 // ✅ 「水曜会」「経営戦略室の戦略」用 API
 const specialDataApiUrl = "https://script.google.com/macros/s/AKfycbyPikpNs-C043HCh9cLPIggbiZIgep44d31os8nCJtZPZz0KASzugNNbcVxThDRnjtfWA/exec";
