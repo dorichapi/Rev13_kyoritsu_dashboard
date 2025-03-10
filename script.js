@@ -59,6 +59,54 @@ async function fetchData() {
         }
 
         const latestData = result.data[result.data.length - 1];
+        
+        //追加　カードの更新日時
+        const updateTimes = result.updateTimes || {};  // 各項目の更新時刻
+
+        // ✅ 各データの更新時刻を取得し、表示
+        const formattedTimes = {
+            "病床利用率": formatTime(updateTimes["病床利用率 (%)"]),
+            "救急車搬入": formatTime(updateTimes["救急車搬入数"]),
+            "入院患者": formatTime(updateTimes["入院患者数"]),
+            "退院予定": formatTime(updateTimes["退院予定数"]),
+            "一般病棟在院数": formatTime(updateTimes["一般病棟在院数"]),
+            "集中治療室在院数": formatTime(updateTimes["集中治療室在院数"]),
+            "平均在院日数": formatTime(updateTimes["平均在院日数"]),
+        };
+
+        // ✅ 各カードにデータを反映
+        document.querySelector(".dashboard .card:nth-child(1) strong").innerText = `${(latestData["病床利用率 (%)"] * 100).toFixed(1)}%`;
+        document.querySelector(".dashboard .card:nth-child(1) .update-time-card").innerText = `更新: ${formattedTimes["病床利用率"]}`;
+
+        document.querySelector(".dashboard .card:nth-child(2) strong").innerText = `${latestData["救急車搬入数"]}台`;
+        document.querySelector(".dashboard .card:nth-child(2) .update-time-card").innerText = `更新: ${formattedTimes["救急車搬入"]}`;
+
+        document.querySelector(".dashboard .card:nth-child(3) strong").innerText = `${latestData["入院患者数"]}人`;
+        document.querySelector(".dashboard .card:nth-child(3) .update-time-card").innerText = `更新: ${formattedTimes["入院患者"]}`;
+
+        document.querySelector(".dashboard .card:nth-child(4) strong").innerText = `${latestData["退院予定数"]}人`;
+        document.querySelector(".dashboard .card:nth-child(4) .update-time-card").innerText = `更新: ${formattedTimes["退院予定"]}`;
+
+        document.querySelector(".dashboard .card:nth-child(5) strong").innerText = `${latestData["一般病棟在院数"]}/218 床`;
+        document.querySelector(".dashboard .card:nth-child(5) .update-time-card").innerText = `更新: ${formattedTimes["一般病棟在院数"]}`;
+
+        document.querySelector(".dashboard .card:nth-child(6) strong").innerText = `${latestData["集中治療室在院数"]}/16 床`;
+        document.querySelector(".dashboard .card:nth-child(6) .update-time-card").innerText = `更新: ${formattedTimes["集中治療室在院数"]}`;
+
+        document.querySelector(".dashboard .card:nth-child(7) strong").innerText = `${latestData["平均在院日数"]}日`;
+        document.querySelector(".dashboard .card:nth-child(7) .update-time-card").innerText = `更新: ${formattedTimes["平均在院日数"]}`;
+
+    } catch (error) {
+        console.error("❌ データ取得エラー:", error);
+    }
+}
+
+// ✅ 時刻フォーマット関数（空の値は "--:--" にする）
+function formatTime(dateString) {
+    if (!dateString) return "--:--";
+    const date = new Date(dateString);
+    return `${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+}
 
         // ✅ 更新時刻を確実に取得するように修正
         let lastEditTime = result.lastEditTime ? new Date(result.lastEditTime) : null;
